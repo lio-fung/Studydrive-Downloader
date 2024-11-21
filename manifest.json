@@ -1,0 +1,20 @@
+/* manifest.json configuration for the Chrome extension */
+{
+  "manifest_version": 3, // Specifies the version of the manifest file format
+  "name": "Studydrive Downloader", // The name of the extension
+  "description": "Download Studydrive documents without a premium account", // A brief description
+  "author": "comlit", // The author of the extension
+  "version": "0.0.2", // The version number of the extension
+  "host_permissions": ["*://*.studydrive.net/"], // Permissions to access Studydrive URLs
+  "permissions": ["webRequest"], // Allows the extension to observe and analyze traffic
+  "content_scripts": [
+    {
+      "js": ["injector.js"], // Scripts to inject into matching pages
+      "matches": ["https://www.studydrive.net/*/doc/*"] // URL patterns where the scripts will run
+    }
+  ],
+  "web_accessible_resources": [{
+      "resources": ["inject.js"], // Resources accessible to web pages
+      "matches": ["<all_urls>"] // URL patterns where resources can be accessed
+  }]
+}
